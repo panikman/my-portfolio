@@ -3,164 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranik Biswas - Portfolio & Certifications</title>
+    <title>Pranik Biswas - Bio-Robotics Portfolio</title>
     <style>
         :root {
-            --bg: #0f172a;
+            /* Theme Colors */
+            --bg-base: #0a0f18;
             --text: #f8fafc;
-            --primary: #38bdf8;
-            --card-bg: #1e293b;
-            --secondary-text: #94a3b8;
-            --btn-hover: #0284c7;
+            --secondary-text: #cbd5e1;
+            
+            /* Robotics / Tech Colors */
+            --tech-primary: #0ea5e9;
+            --tech-glow: rgba(14, 165, 233, 0.2);
+            
+            /* Biology / Science Colors */
+            --bio-primary: #10b981;
+            --bio-glow: rgba(16, 185, 129, 0.2);
+            
+            --card-bg: #111827;
         }
+
         body {
             font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg);
+            background-color: var(--bg-base);
+            /* Creating a subtle glowing background mixing green and blue */
+            background-image: 
+                radial-gradient(circle at 15% 20%, var(--bio-glow) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, var(--tech-glow) 0%, transparent 40%);
+            background-attachment: fixed;
             color: var(--text);
             max-width: 900px;
             margin: 0 auto;
             padding: 2rem 1rem;
             line-height: 1.6;
         }
+
         header {
             text-align: center;
             margin-bottom: 3rem;
-            border-bottom: 1px solid #334155;
             padding-bottom: 2rem;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
         }
-        h1 { 
-            color: var(--primary); 
-            margin-bottom: 0.5rem; 
+
+        .theme-icons {
             font-size: 2.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 15px;
+            animation: float 3s ease-in-out infinite;
         }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 { 
+            background: linear-gradient(to right, var(--bio-primary), var(--tech-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem; 
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
         h2 {
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary);
-            padding-left: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 1px;
         }
+
         .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 2.5rem;
         }
+
         .card {
             background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden; /* Keeps images inside borders */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Border colors specific to theme */
+        .card.bio-theme { border-top: 4px solid var(--bio-primary); }
+        .card.tech-theme { border-top: 4px solid var(--tech-primary); }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
         .card h3 {
             margin-top: 0;
-            color: #e0f2fe;
-            font-size: 1.4rem;
+            color: #ffffff;
+            font-size: 1.6rem;
             margin-bottom: 0.25rem;
         }
-        .card h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            margin-top: 1.5rem;
-        }
+
+        .card.bio-theme h4 { color: var(--bio-primary); }
+        .card.tech-theme h4 { color: var(--tech-primary); }
+
         .meta-info {
             color: var(--secondary-text);
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        ul {
-            margin-top: 0;
-            padding-left: 1.2rem;
-        }
-        li {
-            margin-bottom: 0.4rem;
-        }
+
+        ul { margin-top: 0; padding-left: 1.2rem; }
+        li { margin-bottom: 0.4rem; }
+
         .badge {
             display: inline-block;
-            background: #0369a1;
-            color: #e0f2fe;
+            color: #ffffff;
             padding: 0.35rem 0.75rem;
-            border-radius: 4px;
+            border-radius: 20px;
             font-size: 0.85rem;
             margin-top: 1.5rem;
             margin-right: 0.5rem;
+            font-weight: 600;
         }
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--bg);
-            padding: 0.6rem 1.2rem;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            margin-top: 1.5rem;
+
+        .bio-theme .badge { background: rgba(16, 185, 129, 0.2); border: 1px solid var(--bio-primary); }
+        .tech-theme .badge { background: rgba(14, 165, 233, 0.2); border: 1px solid var(--tech-primary); }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 2rem;
             margin-bottom: 0.5rem;
-            transition: background-color 0.2s ease;
         }
-        .btn-primary:hover {
-            background-color: var(--btn-hover);
+
+        .btn {
+            display: inline-block;
             color: #ffffff;
+            padding: 0.7rem 1.4rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .btn-bio { background-color: var(--bio-primary); }
+        .btn-bio:hover { background-color: #059669; }
+
+        .btn-tech { background-color: var(--tech-primary); }
+        .btn-tech:hover { background-color: #0284c7; }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--secondary-text);
+            color: var(--text);
+        }
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="theme-icons">🧬 🌿 🤖 ⚙️</div>
         <h1>Pranik Biswas</h1>
-        <p>Advanced Robotics & Artificial Intelligence</p>
+        <p>Exploring the Intersection of Biological Sciences & Advanced Robotics</p>
     </header>
 
-    <h2>Certifications & Achievements</h2>
+    <h2>Featured Achievements</h2>
     
     <div class="grid">
-        <!-- Evodyne Robotics Certification -->
-        <div class="card">
-            <h3>Certificate of Expertise: Advanced Robotics Program</h3>
-            <div class="meta-info">
-                <strong>Issued by:</strong> Evodyne Robotics (Mountain View, California) | <strong>Year:</strong> 2026
+        <!-- National Science Bowl Achievement (Biology/Science Theme) -->
+        <div class="card bio-theme">
+            <!-- Decorative Science Image -->
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80" alt="Laboratory Science" class="card-image">
+            
+            <div class="card-content">
+                <h3>National Science Bowl Finals Participant</h3>
+                <div class="meta-info">
+                    <strong>Event:</strong> U.S. Department of Energy National Science Bowl | <strong>Location:</strong> Washington, D.C. | <strong>Year:</strong> 2026
+                </div>
+                
+                <p>Competed at the national level in Washington, D.C., representing the team at the U.S. Department of Energy's highly rigorous National Science Bowl Finals.</p>
+
+                <h4>Event Details:</h4>
+                <ul>
+                    <li><strong>Participant:</strong> Pranik Biswas</li>
+                    <li><strong>Mentor:</strong> Ryan</li>
+                    <li><strong>Recognition:</strong> Received Certificate of Appreciation signed by the Secretary of Energy</li>
+                </ul>
+
+                <div class="btn-group">
+                    <a href="https://drive.google.com/file/d/1LLFVC-cGMNXATNBM4shEOC7edo8xmkNU/view?usp=drive_link" target="_blank" class="btn btn-bio">
+                        🔬 View Certificate
+                    </a>
+                    <a href="https://www.flickr.com/photos/nationalsciencebowl/albums/72177720333352503/" target="_blank" class="btn btn-secondary">
+                        📸 Official Photos
+                    </a>
+                </div>
+                
+                <br>
+                <span class="badge">🧬 STEM</span>
+                <span class="badge">🔬 Science Bowl Finals</span>
+                <span class="badge">🏆 Academic Competition</span>
             </div>
-            
-            <p>Successfully completed training and achieved <strong>Level 1</strong>, <strong>Level 3</strong>, and <strong>Level 10 - Specialist PreDegree</strong>.</p>
-
-            <h4>Core Expertise Gained:</h4>
-            <ul>
-                <li>Arduino & Electronics</li>
-                <li>Breadboards & Wiring</li>
-                <li>Motor Control & Sensors</li>
-                <li>Mechanical Design</li>
-            </ul>
-
-            <h4>Additional Technologies:</h4>
-            <ul>
-                <li>Raspberry Pi</li>
-                <li>Programming: C++ & Python</li>
-                <li>Networking</li>
-                <li>Image Processing & Computer Vision</li>
-            </ul>
-
-            <h4>Key Projects Built:</h4>
-            <ul>
-                <li>Articulated Snake Robot</li>
-                <li>AI Enabled Robotic Arm</li>
-                <li>Autonomous Mobile Robot</li>
-            </ul>
-
-            <!-- Certificate PDF Link -->
-            <a href="Evodyne Robotics Certificate.pdf" target="_blank" class="btn-primary">
-                View Official Certificate
-            </a>
-            
-            <br>
-
-            <!-- Topic Tags -->
-            <span class="badge">Robotics</span>
-            <span class="badge">Hardware Engineering</span>
-            <span class="badge">AI & Vision</span>
         </div>
-        
-        <!-- Placeholder for future certifications -->
-        <div class="card">
-            <h3>More Certifications Coming Soon</h3>
-            <p>New achievements and projects will be added here.</p>
+
+        <!-- Evodyne Robotics Certification (Tech/Robotics Theme) -->
+        <div class="card tech-theme">
+            <!-- Decorative Robotics Image -->
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80" alt="Advanced Robotics" class="card-image">
+            
+            <div class="card-content">
+                <h3>Certificate of Expertise: Advanced Robotics</h3>
+                <div class="meta-info">
+                    <strong>Issued by:</strong> Evodyne Robotics (Mountain View, California) | <strong>Year:</strong> 2026
+                </div>
+                
+                <p>Successfully completed training and achieved <strong>Level 1</strong>, <strong>Level 3</strong>, and <strong>Level 10 - Specialist PreDegree</strong>.</p>
+
+                <h4>Core Expertise Gained:</h4>
+                <ul>
+                    <li>Arduino & Electronics</li>
+                    <li>Breadboards & Wiring</li>
+                    <li>Motor Control & Sensors</li>
+                    <li>Mechanical Design</li>
+                </ul>
+
+                <h4>Additional Technologies:</h4>
+                <ul>
+                    <li>Raspberry Pi</li>
+                    <li>Programming: C++ & Python</li>
+                    <li>Networking</li>
+                    <li>Image Processing & Computer Vision</li>
+                </ul>
+
+                <h4>Key Projects Built:</h4>
+                <ul>
+                    <li>Articulated Snake Robot</li>
+                    <li>AI Enabled Robotic Arm</li>
+                    <li>Autonomous Mobile Robot</li>
+                </ul>
+
+                <div class="btn-group">
+                    <a href="Evodyne Robotics Certificate.pdf" target="_blank" class="btn btn-tech">
+                        🤖 View Official Certificate
+                    </a>
+                </div>
+                
+                <br>
+                <span class="badge">⚙️ Robotics</span>
+                <span class="badge">⚡ Hardware Engineering</span>
+                <span class="badge">👁️ AI & Vision</span>
+            </div>
         </div>
     </div>
 
