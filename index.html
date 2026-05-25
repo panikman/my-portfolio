@@ -13,11 +13,15 @@
             
             /* Robotics / Tech Colors */
             --tech-primary: #0ea5e9;
-            --tech-glow: rgba(14, 165, 233, 0.2);
+            --tech-glow: rgba(14, 165, 233, 0.15);
             
             /* Biology / Science Colors */
             --bio-primary: #10b981;
-            --bio-glow: rgba(16, 185, 129, 0.2);
+            --bio-glow: rgba(16, 185, 129, 0.15);
+
+            /* Science Olympiad / Gold Colors */
+            --oly-primary: #f59e0b;
+            --oly-glow: rgba(245, 158, 11, 0.15);
             
             --card-bg: #111827;
         }
@@ -25,10 +29,11 @@
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background-color: var(--bg-base);
-            /* Creating a subtle glowing background mixing green and blue */
+            /* Glowing background mixing the 3 theme colors */
             background-image: 
                 radial-gradient(circle at 15% 20%, var(--bio-glow) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, var(--tech-glow) 0%, transparent 40%);
+                radial-gradient(circle at 85% 80%, var(--tech-glow) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, var(--oly-glow) 0%, transparent 50%);
             background-attachment: fixed;
             color: var(--text);
             max-width: 900px;
@@ -58,7 +63,7 @@
         }
 
         h1 { 
-            background: linear-gradient(to right, var(--bio-primary), var(--tech-primary));
+            background: linear-gradient(to right, var(--bio-primary), var(--oly-primary), var(--tech-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem; 
@@ -82,7 +87,7 @@
         .card {
             background: var(--card-bg);
             border-radius: 12px;
-            overflow: hidden; /* Keeps images inside borders */
+            overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -93,9 +98,10 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
         }
 
-        /* Border colors specific to theme */
+        /* Border & Accent Colors by Theme */
         .card.bio-theme { border-top: 4px solid var(--bio-primary); }
         .card.tech-theme { border-top: 4px solid var(--tech-primary); }
+        .card.oly-theme { border-top: 4px solid var(--oly-primary); }
 
         .card-image {
             width: 100%;
@@ -117,6 +123,7 @@
 
         .card.bio-theme h4 { color: var(--bio-primary); }
         .card.tech-theme h4 { color: var(--tech-primary); }
+        .card.oly-theme h4 { color: var(--oly-primary); }
 
         .meta-info {
             color: var(--secondary-text);
@@ -142,6 +149,7 @@
 
         .bio-theme .badge { background: rgba(16, 185, 129, 0.2); border: 1px solid var(--bio-primary); }
         .tech-theme .badge { background: rgba(14, 165, 233, 0.2); border: 1px solid var(--tech-primary); }
+        .oly-theme .badge { background: rgba(245, 158, 11, 0.2); border: 1px solid var(--oly-primary); }
 
         .btn-group {
             display: flex;
@@ -167,6 +175,9 @@
         .btn-tech { background-color: var(--tech-primary); }
         .btn-tech:hover { background-color: #0284c7; }
 
+        .btn-oly { background-color: var(--oly-primary); }
+        .btn-oly:hover { background-color: #d97706; }
+
         .btn-secondary {
             background-color: transparent;
             border: 1px solid var(--secondary-text);
@@ -180,9 +191,9 @@
 <body>
 
     <header>
-        <div class="theme-icons">🧬 🌿 🤖 ⚙️</div>
+        <div class="theme-icons">🧬 🏅 🤖 ⚙️</div>
         <h1>Pranik Biswas</h1>
-        <p>Exploring the Intersection of Biological Sciences & Advanced Robotics</p>
+        <p>Exploring the Intersection of Biological Sciences, Advanced Robotics & STEM</p>
     </header>
 
     <h2>Featured Achievements</h2>
@@ -194,17 +205,18 @@
             <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80" alt="Laboratory Science" class="card-image">
             
             <div class="card-content">
-                <h3>National Science Bowl Finals Participant</h3>
+                <h3>🥈 2nd Place - National Science Bowl</h3>
                 <div class="meta-info">
-                    <strong>Event:</strong> U.S. Department of Energy National Science Bowl | <strong>Location:</strong> Washington, D.C. | <strong>Year:</strong> 2026
+                    <strong>Event:</strong> U.S. Department of Energy National Science Bowl | <strong>Team:</strong> Joaquin Miller Middle School | <strong>Year:</strong> 2026
                 </div>
                 
-                <p>Competed at the national level in Washington, D.C., representing the team at the U.S. Department of Energy's highly rigorous National Science Bowl Finals.</p>
+                <p>Achieved <strong>2nd Place Overall</strong> at the highly rigorous National Science Bowl Finals in Washington, D.C., representing Joaquin Miller Middle School, after securing an undefeated victory at the regional level.</p>
 
-                <h4>Event Details:</h4>
+                <h4>Event Highlights:</h4>
                 <ul>
+                    <li><strong>National Finals:</strong> 2nd Place Overall at the DOE National Science Bowl (Washington, D.C.)</li>
+                    <li><strong>Regionals:</strong> 1st Place Champions at the SLAC Regional Science Bowl</li>
                     <li><strong>Participant:</strong> Pranik Biswas</li>
-                    <li><strong>Mentor:</strong> Ryan</li>
                     <li><strong>Recognition:</strong> Received Certificate of Appreciation signed by the Secretary of Energy</li>
                 </ul>
 
@@ -219,8 +231,39 @@
                 
                 <br>
                 <span class="badge">🧬 STEM</span>
-                <span class="badge">🔬 Science Bowl Finals</span>
-                <span class="badge">🏆 Academic Competition</span>
+                <span class="badge">🏆 National Runner-Up</span>
+                <span class="badge">⚛️ SLAC Champion</span>
+            </div>
+        </div>
+
+        <!-- Science Olympiad (Gold/Olympiad Theme) -->
+        <div class="card oly-theme">
+            <img src="https://images.unsplash.com/photo-1564325724739-bae0bd08762c?auto=format&fit=crop&w=800&q=80" alt="Science Equipment and Books" class="card-image">
+            <div class="card-content">
+                <h3>🏅 Science Olympiad Medalist</h3>
+                <div class="meta-info">
+                    <strong>Team:</strong> Joaquin Miller Middle School | <strong>Seasons:</strong> 2025 - 2026
+                </div>
+                
+                <p>Competed in rigorous STEM events across multiple disciplines at the regional and state levels for Joaquin Miller Middle School's highly competitive Science Olympiad program.</p>
+
+                <h4>Team Placements & Seasons:</h4>
+                <ul>
+                    <li><strong>2026 Season:</strong> Promoted to and competed on the premier <strong>Miller Gold</strong> team. <em>[List your specific events/medals here]</em></li>
+                    <li><strong>2025 Season:</strong> Competed and medaled with the <strong>Miller White</strong> team. <em>[List your specific events/medals here]</em></li>
+                </ul>
+
+                <div class="btn-group">
+                    <!-- Links to Duosmium where results are publicly tracked -->
+                    <a href="https://duosmium.org/" target="_blank" class="btn btn-oly">
+                        📊 View Official Placements
+                    </a>
+                </div>
+                
+                <br>
+                <span class="badge">🧪 Science Olympiad</span>
+                <span class="badge">🥇 Miller Gold</span>
+                <span class="badge">📈 Duosmium Verified</span>
             </div>
         </div>
 
@@ -230,7 +273,7 @@
             <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80" alt="Advanced Robotics" class="card-image">
             
             <div class="card-content">
-                <h3>Certificate of Expertise: Advanced Robotics</h3>
+                <h3>🤖 Certificate of Expertise: Advanced Robotics</h3>
                 <div class="meta-info">
                     <strong>Issued by:</strong> Evodyne Robotics (Mountain View, California) | <strong>Year:</strong> 2026
                 </div>
@@ -262,7 +305,7 @@
 
                 <div class="btn-group">
                     <a href="Evodyne Robotics Certificate.pdf" target="_blank" class="btn btn-tech">
-                        🤖 View Official Certificate
+                        📜 View Official Certificate
                     </a>
                 </div>
                 
